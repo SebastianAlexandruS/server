@@ -1,0 +1,26 @@
+stages:
+  - create jar
+  - build & push docker image
+
+jar:
+  image: maven:latest
+  stage: create jar
+  script:
+    - mvn clean install
+  artifacts:
+    paths:
+      - target/*.jar
+#  only:
+#    - main
+
+docker:
+  services:
+    - docker:latest
+  image: docker:latest
+  stage: build & push docker image
+  script:
+    - docker build -t sebastianalexandru/server:latest .
+    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
+    - docker push sebastianalexandru/server:latest
+#  only:
+#    - main
