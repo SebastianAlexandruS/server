@@ -1,10 +1,11 @@
+image: maven:latest
+
 stages:
   - create jar
 #  - build & push docker image
 #  - deploy
 
 maven-build:
-  image: maven:latest
   stage: create jar
   script:
     - mvn build -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
