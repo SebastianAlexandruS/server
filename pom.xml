@@ -63,7 +63,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>server</finalName>
+<!--		<finalName>server</finalName>-->
 	</build>
 
 </project>
