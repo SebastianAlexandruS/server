@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
-<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>nginx</artifactId>
@@ -65,22 +65,22 @@
 <!--		</snapshotRepository>-->
 <!--	</distributionManagement>-->
 
-	<repositories>
-		<repository>
-			<id>gitlab-maven</id>
-			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>
-		</repository>
-	</repositories>
-	<distributionManagement>
-		<repository>
-			<id>gitlab-maven</id>
-			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>
-		</repository>
-		<snapshotRepository>
-			<id>gitlab-maven</id>
-			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>
-		</snapshotRepository>
-	</distributionManagement>
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>gitlab-maven</id>-->
+<!--			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>-->
+<!--		</repository>-->
+<!--	</repositories>-->
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>gitlab-maven</id>-->
+<!--			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>gitlab-maven</id>-->
+<!--			<url>https://code.siemens.com/api/v4/projects/281517/packages/maven</url>-->
+<!--		</snapshotRepository>-->
+<!--	</distributionManagement>-->
 
 
 
