@@ -9,15 +9,30 @@ maven-build:
     - mvn clean install -Dmaven.test.skip=true -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
   artifacts:
     paths:
-      - target/server.jar
+      - target/com.example:nginx:0.0.1-SNAPSHOT.jar
 
-docker:
-  services:
-    - docker:latest
-  image: docker:latest
+docker-build:
   stage: build & push docker image
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.1-debug
+    entrypoint: [""]
+  before_script:
+    # - export APP_VERSION=$CI_PIPELINE_IID.$CI_COMMIT_REF_NAME
+    - export http_proxy=194.145.60.254:9400
+    - export https_proxy=194.145.60.254:9400
+    - export no_proxy="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
   script:
-    - docker build -t sebastianalexandru/server:latest .
-    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
-    - docker push sebastianalexandru/server:latest
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
+    - cat /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --build-arg http_proxy=$http_proxy
+      --build-arg https_proxy=$https_proxy
+      --build-arg no_proxy=$no_proxy
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}:V1.0.0"
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - Dockerfile
 
