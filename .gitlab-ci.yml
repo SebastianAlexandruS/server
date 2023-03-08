@@ -2,16 +2,14 @@ stages:
   - create jar
   - build & push docker image
 
-jar:
+maven-build:
   image: maven:latest
   stage: create jar
   script:
-    - mvn clean install
+    - mvn clean install -Dmaven.test.skip=true -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
   artifacts:
     paths:
       - target/*.jar
-#  only:
-#    - main
 
 docker:
   services:
@@ -22,5 +20,4 @@ docker:
     - docker build -t sebastianalexandru/server:latest .
     - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
     - docker push sebastianalexandru/server:latest
-#  only:
-#    - main
+
