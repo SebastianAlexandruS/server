@@ -8,8 +8,8 @@ stages:
 maven-build:
   stage: create jar
   script:
-    - ping de.coia.siemens.net
-    - ping 194.145.60.254
+    - ping -c de.coia.siemens.net
+    - ping -c 194.145.60.254
     - mvn compile -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
 #  artifacts:
 #    paths:
