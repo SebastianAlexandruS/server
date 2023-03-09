@@ -9,7 +9,7 @@ maven-build:
   stage: create jar
   script:
     -
-    - mvn compile -Dhttp.proxyHost="http://de.coia.siemens.net" -Dhttp.proxyPort=9400 -Dhttps.proxyHost="http://de.coia.siemens.net" -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
+    - mvn compile -Dhttp.proxyHost="de.coia.siemens.net" -Dhttp.proxyPort=9400 -Dhttps.proxyHost="de.coia.siemens.net" -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
 #  artifacts:
 #    paths:
 #      - target/nginx:0.0.1-SNAPSHOT.jar
