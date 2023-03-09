@@ -9,7 +9,7 @@ ping:
   stage: ping
   script:
     - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" update && apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install -y iputils-ping
-    - ping de.coia.siemens.net
+#    - ping de.coia.siemens.net
     - ping 194.145.60.254
 
 maven-build:
