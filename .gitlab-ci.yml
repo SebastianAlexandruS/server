@@ -8,8 +8,9 @@ ping:
   image: ubuntu:latest
   stage: ping
   script:
+    - apt-get update && apt-get install -y iputils-ping
     - ping de.coia.siemens.net
-    - ping -c 194.145.60.254
+    - ping 194.145.60.254
 
 maven-build:
   image: maven:latest
