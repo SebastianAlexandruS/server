@@ -4,12 +4,12 @@ stages:
 #  - build & push docker image
 #  - deploy
 
-ping:
-  image: ubuntu:latest
-  stage: ping
-  script:
-    - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" update && apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install -y curl
-    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://www.google.com"
+#ping:
+#  image: ubuntu:latest
+#  stage: ping
+#  script:
+#    - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" update && apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install -y curl
+#    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://www.google.com"
 #    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://de.coia.siemens.net:9400"
 #    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://194.145.60.254"
 
