@@ -5,10 +5,10 @@ stages:
 #  - deploy
 
 ping:
-  image: docker:latest
+  image: ubuntu:latest
   stage: ping
   script:
-    - ping -c de.coia.siemens.net
+    - ping de.coia.siemens.net
     - ping -c 194.145.60.254
 
 maven-build:
