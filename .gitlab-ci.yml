@@ -11,7 +11,7 @@ ping:
     - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" update && apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install -y curl
 #    - curl --proxy "http://de.coia.siemens.net" "http://de.coia.siemens.net"
 #    - curl --proxy "http://de.coia.siemens.net" "http://194.145.60.254"
-    - curl -L --proxy "http://de.coia.siemens.net" "http://www.google.com"
+    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://www.google.com"
 
 maven-build:
   image: maven:latest
