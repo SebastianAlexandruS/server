@@ -1,15 +1,20 @@
-image: maven:latest
-
 stages:
+  - ping
   - create jar
 #  - build & push docker image
 #  - deploy
 
-maven-build:
-  stage: create jar
+ping:
+  image: docker:latest
+  stage: ping
   script:
     - ping -c de.coia.siemens.net
     - ping -c 194.145.60.254
+
+maven-build:
+  image: maven:latest
+  stage: create jar
+  script:
     - mvn compile -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
 #  artifacts:
 #    paths:
