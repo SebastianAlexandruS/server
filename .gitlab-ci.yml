@@ -4,10 +4,10 @@ stages:
 #  - build & push docker image
 #  - deploy
 
-.config:
-  variables:
-    HTTP_PROXY: http://de.coia.siemens.net:9400
-    HTTPS_PROXY: http://de.coia.siemens.net:9400
+#.config:
+#  variables:
+#    HTTP_PROXY: http://de.coia.siemens.net:9400
+#    HTTPS_PROXY: http://de.coia.siemens.net:9400
 
 #ping:
 #  image: ubuntu:latest
@@ -22,13 +22,13 @@ maven-build:
   image: maven:latest
 #  image: ubuntu:latest
   stage: create jar
-  extends: .config
+#  extends: .config
   script:
 #    - mvn install -B
 #    - mvn compile -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
 #    - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" update & apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install maven
-#    - mvn clean package -B -Dhttp.proxyHost="de.coia.siemens.net" -Dhttp.proxyPort=9400 -Dhttps.proxyHost="de.coia.siemens.net" -Dhttps.proxyPort=9400
-    - mvn clean package
+    - mvn clean package -B -Dhttp.proxyHost="de.coia.siemens.net" -Dhttp.proxyPort=9400 -Dhttps.proxyHost="de.coia.siemens.net" -Dhttps.proxyPort=9400
+#    - mvn clean package
     - cp target/nginx*.jar nginx-{CI_COMMIT_SHA}.jar
 #    - mvn install -Dhttp.proxyHost=http://de.coia.siemens.net -Dhttp.proxyPort=9400 -Dhttps.proxyHost=http://de.coia.siemens.net -Dhttps.proxyPort=9400
 
