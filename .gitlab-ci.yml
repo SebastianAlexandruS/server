@@ -15,6 +15,7 @@ stages:
 
 maven-build:
 #  image: maven:latest
+  image: ubuntu:latest
   stage: create jar
   script:
 #    - mvn install -B
