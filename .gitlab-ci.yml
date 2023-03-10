@@ -19,6 +19,7 @@ maven-build:
   script:
 #    - mvn install -B
 #    - mvn compile -Dhttp.proxyHost=194.145.60.254 -Dhttp.proxyPort=9400 -Dhttps.proxyHost=194.145.60.254 -Dhttps.proxyPort=9400 -Dhttp.nonProxyHosts="*.siemens.de|*.siemens.net|*.siemens.com|*.siemens.io|localhost|127.0.0.1"
+    - apt-get -o Acquire::http::proxy="http://de.coia.siemens.net:9400" install maven
     - mvn clean package -B -Dhttp.proxyHost="de.coia.siemens.net" -Dhttp.proxyPort=9400 -Dhttps.proxyHost="de.coia.siemens.net" -Dhttps.proxyPort=9400
     - cp target/nginx*.jar nginx-{CI_COMMIT_SHA}.jar
 #    - mvn install -Dhttp.proxyHost=http://de.coia.siemens.net -Dhttp.proxyPort=9400 -Dhttps.proxyHost=http://de.coia.siemens.net -Dhttps.proxyPort=9400
