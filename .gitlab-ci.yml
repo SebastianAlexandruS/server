@@ -19,7 +19,7 @@ stages:
 #    - curl -L --proxy "http://de.coia.siemens.net:9400" "http://194.145.60.254"
 
 maven-build:
-  image: maven:3.9.0-eclipse-temurin-17
+  image: maven:3.8.3-openjdk-17
 
 #  image: ubuntu:latest
   stage: create jar
